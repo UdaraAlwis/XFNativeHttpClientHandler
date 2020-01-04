@@ -1,9 +1,9 @@
 # XFNativeHttpClientHandler
-Xamarin Forms Native HttpClient Handler demo...
+Xamarin Forms Native HttpClientHandler for HttpClient demo...
 
 Let's properly set up our HttpClient with Native HttpClient Handlers in Xamarin.Forms!
 
-Instead of using the .NET managed HttpClientHandler, we neet make sure to use the Native Client Handlers of each platform with our HttpClient, for the sake of performance, smaller executables, and security advantage.
+Instead of using the .NET managed HttpClientHandler, we need make sure to use the Native Client Handlers of each platform with our HttpClient, for the sake of performance, smaller executables, and security advantage.
 
 **AndroidClientHandler**
 -AndroidClientHandler is the new handler that delegates to native Java code and Android OS instead of implementing everything in managed code. This option has better persformance and smaller executable size.
