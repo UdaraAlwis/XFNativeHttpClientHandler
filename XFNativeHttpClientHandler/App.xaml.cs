@@ -6,6 +6,8 @@ namespace XFNativeHttpClientHandler
 {
     public partial class App : Application
     {
+        public static object NativeHttpClientHandler { get; set; }
+
         public App()
         {
             InitializeComponent();

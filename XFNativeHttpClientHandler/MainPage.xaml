@@ -1,16 +1,202 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="XFNativeHttpClientHandler.MainPage">
+<ContentPage
+    x:Class="XFNativeHttpClientHandler.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Home"
+    iOsSpecific:Page.UseSafeArea="true"
+    mc:Ignorable="d">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+
+    <StackLayout Padding="20">
+        <!--  Place new controls here  -->
+        <Label
+            Margin="0,0,0,20"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="Xamarin.Forms PEN Test Prep Demo" />
+
+        <Label
+            Margin="10,0,0,0"
+            FontSize="Medium"
+            Text="Safe HTTPS Secured Test:"
+            VerticalTextAlignment="Center" />
+        <Frame Padding="5" BackgroundColor="LightGray">
+            <Grid>
+                <Label
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="[https://google.com/]"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+                <ActivityIndicator
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    IsRunning="{Binding IsRunning}"
+                    Color="WhiteSmoke" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Frame.Triggers>
+                <DataTrigger
+                    Binding="{Binding ResultHttpsSecured}"
+                    TargetType="Frame"
+                    Value="True">
+                    <Setter Property="BackgroundColor" Value="#2196F3" />
+                </DataTrigger>
+                <DataTrigger
+                    Binding="{Binding ResultHttpsSecured}"
+                    TargetType="Frame"
+                    Value="False">
+                    <Setter Property="BackgroundColor" Value="Red" />
+                </DataTrigger>
+            </Frame.Triggers>
+        </Frame>
+
+        <Label
+            Margin="10,0,0,0"
+            FontSize="Medium"
+            Text="Self-Signed HTTPS Certificate Test:"
+            VerticalTextAlignment="Center" />
+        <Frame Padding="5" BackgroundColor="LightGray">
+            <Grid>
+                <Label
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="[https://self-signed.badssl.com/]"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+                <ActivityIndicator
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    IsRunning="{Binding IsRunning}"
+                    Color="WhiteSmoke" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Frame.Triggers>
+                <DataTrigger
+                    Binding="{Binding ResultHttpsSelfSigned}"
+                    TargetType="Frame"
+                    Value="True">
+                    <Setter Property="BackgroundColor" Value="#2196F3" />
+                </DataTrigger>
+                <DataTrigger
+                    Binding="{Binding ResultHttpsSelfSigned}"
+                    TargetType="Frame"
+                    Value="False">
+                    <Setter Property="BackgroundColor" Value="Red" />
+                </DataTrigger>
+            </Frame.Triggers>
+        </Frame>
+
+        <Label
+            Margin="10,0,0,0"
+            FontSize="Medium"
+            Text="Non-SSL HTTP Endpoint Test:"
+            VerticalTextAlignment="Center" />
+        <Frame Padding="5" BackgroundColor="LightGray">
+            <Grid>
+                <Label
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="[http://http.badssl.com/]"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+                <ActivityIndicator
+                    Grid.Column="1"
+                    IsRunning="{Binding IsRunning}"
+                    Color="WhiteSmoke" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Frame.Triggers>
+                <DataTrigger
+                    Binding="{Binding ResultHttpTest}"
+                    TargetType="Frame"
+                    Value="True">
+                    <Setter Property="BackgroundColor" Value="#2196F3" />
+                </DataTrigger>
+                <DataTrigger
+                    Binding="{Binding ResultHttpTest}"
+                    TargetType="Frame"
+                    Value="False">
+                    <Setter Property="BackgroundColor" Value="Red" />
+                </DataTrigger>
+            </Frame.Triggers>
+        </Frame>
+
+        <Label
+            Margin="10,0,0,0"
+            FontSize="Medium"
+            Text="Device Proxy Settings:"
+            VerticalTextAlignment="Center" />
+        <Frame Padding="5" BackgroundColor="#2196F3">
+            <Grid>
+                <Label
+                    Margin="10,10,0,10"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding ProxySettingsText}"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </Frame>
+
+
+        <Button
+            x:Name="TestButton"
+            BackgroundColor="#2196F3"
+            Clicked="TestButton_Clicked"
+            FontAttributes="Bold"
+            Text="GO"
+            TextColor="White"
+            VerticalOptions="EndAndExpand">
+            <Button.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsRunning}"
+                    TargetType="Button"
+                    Value="True">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger
+                    Binding="{Binding IsRunning}"
+                    TargetType="Button"
+                    Value="False">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Button.Triggers>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="#2196F3" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Gray" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Button>
     </StackLayout>
+
 
 </ContentPage>
