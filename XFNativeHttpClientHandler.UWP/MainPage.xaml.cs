@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+﻿using System.Net.Http;
 
 namespace XFNativeHttpClientHandler.UWP
 {
@@ -20,6 +7,16 @@ namespace XFNativeHttpClientHandler.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            var uwpClientHandler = new WinHttpHandler()
+            {
+                //ServerCertificateValidationCallback =
+                //   (message, certificate2, arg3, arg4) =>
+                //   {
+                //       return true;
+                //   }
+            };
+            Services.HttpClientService.HttpClientHandler = uwpClientHandler;
 
             LoadApplication(new XFNativeHttpClientHandler.App());
         }

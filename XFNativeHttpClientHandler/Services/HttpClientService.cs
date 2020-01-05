@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using Xamarin.Forms;
 
 namespace XFNativeHttpClientHandler.Services
@@ -7,7 +8,23 @@ namespace XFNativeHttpClientHandler.Services
     {
         public HttpClient HttpClient { get; private set; }
 
-        public static object HttpClientHandler = null;
+        private static object httpClientHandler = null;
+        public static object HttpClientHandler 
+        {
+            get => httpClientHandler;
+            set 
+            {
+                if (httpClientHandler == null) 
+                {
+                    if (value is HttpMessageHandler)
+                        httpClientHandler = value;
+                    else
+                        throw new Exception($"{nameof(HttpClientHandler)} incorrect type!");
+                }
+                else
+                    throw new Exception($"{nameof(HttpClientHandler)} is already setup!");
+            }
+        }
 
         private static HttpClientService instance = null;
         private static readonly object padlock = new object();

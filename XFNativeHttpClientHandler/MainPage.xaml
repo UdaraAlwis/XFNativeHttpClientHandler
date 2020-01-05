@@ -10,14 +10,13 @@
     iOsSpecific:Page.UseSafeArea="true"
     mc:Ignorable="d">
 
-
     <StackLayout Padding="20">
         <!--  Place new controls here  -->
         <Label
             Margin="0,0,0,20"
             FontSize="Large"
             HorizontalOptions="Center"
-            Text="Xamarin.Forms PEN Test Prep Demo" />
+            Text="Xamarin.Forms Native Http Client Handler Demo" />
 
         <Label
             Margin="10,0,0,0"

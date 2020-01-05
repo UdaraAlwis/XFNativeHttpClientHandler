@@ -1,12 +1,8 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using XFNativeHttpClientHandler.Services;
 using Xamarin.Android.Net;
 
 namespace XFNativeHttpClientHandler.Droid
@@ -25,7 +21,7 @@ namespace XFNativeHttpClientHandler.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             var androidClientHandler = new AndroidClientHandler();
-            HttpClientService.HttpClientHandler = androidClientHandler;
+            Services.HttpClientService.HttpClientHandler = androidClientHandler;
 
             LoadApplication(new App());
         }
