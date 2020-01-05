@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Net.Http;
 using Foundation;
 using UIKit;
 
@@ -23,6 +23,14 @@ namespace XFNativeHttpClientHandler.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            
+            var iosClientHandler = new NSUrlSessionHandler();
+            //iosClientHandler.TrustOverride += (sender, trust) =>
+            //{
+            //    return true;
+            //};
+            Services.HttpClientService.HttpClientHandler = iosClientHandler;
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
