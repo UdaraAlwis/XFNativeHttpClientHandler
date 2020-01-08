@@ -103,7 +103,7 @@
         <Label
             Margin="10,0,0,0"
             FontSize="Medium"
-            Text="Non-SSL HTTP Endpoint Test:"
+            Text="Non-SSL HTTP Test:"
             VerticalTextAlignment="Center" />
         <Frame Padding="5" BackgroundColor="LightGray">
             <Grid>
@@ -138,23 +138,6 @@
                     <Setter Property="BackgroundColor" Value="Red" />
                 </DataTrigger>
             </Frame.Triggers>
-        </Frame>
-
-        <Label
-            Margin="10,0,0,0"
-            FontSize="Medium"
-            Text="Device Proxy Settings:"
-            VerticalTextAlignment="Center" />
-        <Frame Padding="5" BackgroundColor="#2196F3">
-            <Grid>
-                <Label
-                    Margin="10,10,0,10"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="{Binding ProxySettingsText}"
-                    TextColor="White"
-                    VerticalTextAlignment="Center" />
-            </Grid>
         </Frame>
 
 

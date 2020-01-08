@@ -4,6 +4,10 @@ using Xamarin.Forms;
 
 namespace XFNativeHttpClientHandler.Services
 {
+    /// <summary>
+    /// Service that provides
+    /// HttpClient instance
+    /// </summary>
     public class HttpClientService
     {
         public HttpClient HttpClient { get; private set; }
