@@ -20,7 +20,8 @@ namespace XFNativeHttpClientHandler.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            var androidClientHandler = new AndroidClientHandler();
+            //var androidClientHandler = new AndroidClientHandler();
+            var androidClientHandler = new CustomAndroidClientHandler();
             Services.HttpClientService.HttpClientHandler = androidClientHandler;
 
             LoadApplication(new App());
