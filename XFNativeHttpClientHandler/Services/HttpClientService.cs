@@ -8,16 +8,16 @@ namespace XFNativeHttpClientHandler.Services
     {
         public HttpClient HttpClient { get; private set; }
 
-        private static object httpClientHandler = null;
+        private static object _httpClientHandler = null;
         public static object HttpClientHandler 
         {
-            get => httpClientHandler;
+            get => _httpClientHandler;
             set 
             {
-                if (httpClientHandler == null) 
+                if (_httpClientHandler == null) 
                 {
                     if (value is HttpMessageHandler)
-                        httpClientHandler = value;
+                        _httpClientHandler = value;
                     else
                         throw new Exception($"{nameof(HttpClientHandler)} incorrect type!");
                 }
@@ -26,28 +26,22 @@ namespace XFNativeHttpClientHandler.Services
             }
         }
 
-        private static HttpClientService instance = null;
-        private static readonly object padlock = new object();
+        private static HttpClientService _instance = null;
+        private static readonly object Padlock = new object();
 
         private HttpClientService()
         {
-            if (HttpClientHandler != null)
-                HttpClient = new HttpClient((HttpMessageHandler)HttpClientHandler);
-            else
-                HttpClient = new HttpClient();
+            HttpClient = HttpClientHandler != null ?
+                new HttpClient((HttpMessageHandler)HttpClientHandler) : new HttpClient();
         }
 
         public static HttpClientService Instance
         {
             get
             {
-                lock (padlock)
+                lock (Padlock)
                 {
-                    if (instance == null)
-                    {
-                        instance = new HttpClientService();
-                    }
-                    return instance;
+                    return _instance ?? (_instance = new HttpClientService());
                 }
             }
         }
