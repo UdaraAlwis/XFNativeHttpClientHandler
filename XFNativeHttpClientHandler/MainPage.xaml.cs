@@ -61,8 +61,8 @@ namespace XFNativeHttpClientHandler
 
             try
             {
-                var resultBadSslTest = await _httpClient.GetStringAsync(httpBadSsl);
-                _viewModel.ResultHttpTest = true;
+                var resultBadSslTest = await _httpClient.GetAsync(httpBadSsl);
+                _viewModel.ResultHttpTest = resultBadSslTest.IsSuccessStatusCode;
             }
             catch (Exception ex)
             {
