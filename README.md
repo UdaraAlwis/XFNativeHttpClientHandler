@@ -16,6 +16,10 @@ Instead of using the .NET managed HttpClientHandler, we need make sure to use th
 **WinHttpHandler**
 -WinHttpHandler is implemented as a thin wrapper on the WinHTTP interface of Windows and is only supported on Windows systems. Provides developers with more granular control over the application's HTTP communication than the default HttpClientHandler class.
 
+Default Behavior demo:
+
+![Native HttpClient Handler Behavior](/screenshots/NativeHttpClientHandlerDefaultBehavior.png)
+
 Resources that helped me: 
 
 HttpClient Stack Android - https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/http-stack?context=xamarin%2Fcross-platform&tabs=windows <br />
